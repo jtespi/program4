@@ -1,0 +1,28 @@
+<!-- Last modified  by Jacob Espinoza
+ Date: 2018 April 25 -->
+<project name="program4" default="compile" >
+
+   <!-- standard compile task, but turn debugging on for source viewing -->
+   <target name="compile" description="compile the source">
+      <javac srcdir="." includeantruntime="false" debug="false"/>
+   </target>
+
+   
+
+   <!-- run program CircleRun -->
+   <target name="run" depends="compile">
+     
+      <java classname="CircleRun" fork="true">
+      </java>
+      
+   </target>
+
+
+   <!-- clean up by removing all generated files; do "ant clean" to start afresh -->
+   <target name="clean">
+      <delete>
+         <fileset dir="." includes="*.class"/>
+      </delete>
+   </target>
+
+</project>
