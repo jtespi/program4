@@ -78,6 +78,16 @@ public void scaleDown() {
    Assert.assertTrue( rad == 1.5 );
 }
 
+// Test circle scaling by a negative value (-2)
+//
+@Test
+public void scaleNeg() {
+   double rad;
+   System.out.println("Running test scaleNeg.");
+   rad = circle1.scale( -2 );
+   Assert.assertFalse( rad == -6 );
+}
+
 // Test circle intersect on an overlapping circle
 //   The other circle has the exact same dimensions
 @Test
