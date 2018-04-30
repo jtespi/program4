@@ -1,21 +1,15 @@
 <!-- Last modified  by Jacob Espinoza
- Date: 2018 April 25 -->
+ Date: 2018 April 30 
+ Program 4 JUnit Testing
+ CS 371 Software Development w/ Dr. Toups -->
+
 <project name="program4" default="compile" >
 
-   <!-- property for the classpath to the JUnit class -->
+   <!-- global property names -->
    <property name="classpath" location="lib"/>
    <property name="build" location="build"/>
 
-    <!-- taskdef produces an error :( 
-    <taskdef name="junit"
-            class="org.apache.tools.ant.taskdefs.optional.junit.JUnitTask">
-      <classpath>
-        <pathelement location="${junitdir}/junit.jar"/>
-        <pathelement location="${junitdir}/ant-junit.jar"/>
-      </classpath>
-    </taskdef>
-    -->
-
+   <!-- build classpath to the JUnit jar files -->
    <path id="build.classpath">
       <fileset dir="${classpath}">
          <include name="*.jar"/>
@@ -30,7 +24,24 @@
       </javac>
    </target>
 
-   
+   <!-- JUnit test task, runs a batch test on all files with 'Test' in them -->
+   <target name="test" depends="compile">
+
+      <junit> 
+
+         <classpath refid = "build.classpath" />
+         <classpath location="${build}"/>
+
+         <formatter type = "brief" usefile = "false" />
+         <batchtest fork="no">
+            <fileset dir=".">
+               <include name="**/*Test*.java"/>
+            </fileset>
+         </batchtest>
+
+      </junit>
+
+   </target>
 
    <!-- run program CircleRun -->
    <target name="run" depends="compile">
@@ -41,7 +52,7 @@
    </target>
 
 
-   <!-- clean up by removing all generated files; do "ant clean" to start afresh -->
+   <!-- clean up by removing all generated files; do "ant clean" to start anew -->
    <target name="clean">
       <delete>
          <fileset dir="." includes="*.class"/>
