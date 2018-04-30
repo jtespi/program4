@@ -90,7 +90,7 @@ public void scaleNeg() {
    System.out.println("scaleNeg\' starting...");
    rad = circle1.scale( negScalar );
    System.out.printf("New rad = %f\n", rad);
-   Assert.assertTrue("Failure, radius should be positive", rad >= 0 );
+   Assert.assertTrue("Failure, radius should not be negative", rad >= 0 );
 }
 
 // Test circle intersect on an overlapping circle
