@@ -9,3 +9,6 @@ Before it incorrectly added the factor to the old radius instead of multiplying 
 Super function call in Circle2.java had arguments in the wrong order.
 The incorrect order was super( y, x, radius), which would reverse x and y coordinates.
 
+The scale function used to allow negative scalars which would result in radius values being negative.
+Fixed to not change the radius if the scalar is less than 0.
+

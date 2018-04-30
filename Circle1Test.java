@@ -12,6 +12,8 @@
 ***/
 
 import org.junit.*;
+import org.junit.Assert.*;
+import org.hamcrest.CoreMatchers.*;
 
 public class Circle1Test
 {
@@ -24,7 +26,7 @@ public class Circle1Test
 @Before
 public void setup()
 {
-   System.out.println("\nTest starting...");
+   System.out.print("\nTest \'");
    circle1 = new Circle1(1,2,3);
 }
 
@@ -42,9 +44,9 @@ public void teardown()
 public void simpleMove()
 {
    Point p;
-   System.out.println("Running test simpleMove.");
+   System.out.println("simpleMove\' starting...");
    p = circle1.moveBy(1,1);
-   Assert.assertTrue(p.x == 2 && p.y == 3);
+   Assert.assertTrue("Failure: centre point should be 2, 3", p.x == 2 && p.y == 3);
 }
 
 
@@ -53,9 +55,9 @@ public void simpleMove()
 public void simpleMoveNeg()
 {
    Point p;
-   System.out.println("Running test simpleMoveNeg.");
+   System.out.println("simpleMoveNeg\' starting...");
    p = circle1.moveBy(-1,-1);
-   Assert.assertTrue(p.x == 0 && p.y == 1);
+   Assert.assertTrue("Failure: centre point should be 0, 1", p.x == 0 && p.y == 1);
 }
 
 
@@ -63,9 +65,9 @@ public void simpleMoveNeg()
 @Test
 public void scaleUp() {
    double rad;
-   System.out.println("Running test scaleUp.");
+   System.out.println("scaleUp\' starting...");
    rad = circle1.scale( 3 );
-   Assert.assertTrue( rad == 9 );
+   Assert.assertTrue("Failure: radius should be 9", rad == 9 );
 }
 
 // Test circle scaling down by a factor of half (0.5)
@@ -73,19 +75,22 @@ public void scaleUp() {
 @Test
 public void scaleDown() {
    double rad;
-   System.out.println("Running test scaleDown.");
+   System.out.println("scaleDown\' starting...");
    rad = circle1.scale( 0.5 );
-   Assert.assertTrue( rad == 1.5 );
+   Assert.assertTrue("Failure: radius should be 1.5", rad == 1.5 );
 }
 
 // Test circle scaling by a negative value (-2)
 //
 @Test
 public void scaleNeg() {
-   double rad;
-   System.out.println("Running test scaleNeg.");
-   rad = circle1.scale( -2 );
-   Assert.assertFalse( rad == -6 );
+   Double rad;
+   Double negScalar = -2.0;
+
+   System.out.println("scaleNeg\' starting...");
+   rad = circle1.scale( negScalar );
+   System.out.printf("New rad = %f\n", rad);
+   Assert.assertTrue("Failure, radius should be positive", rad >= 0 );
 }
 
 // Test circle intersect on an overlapping circle
@@ -94,8 +99,8 @@ public void scaleNeg() {
 public void intersect1() {
    Circle1 circ2 = new Circle1(1,2,3);
   
-   System.out.println("Running test intersect1.");
-   Assert.assertTrue( circle1.intersects( circ2 ) );
+   System.out.println("intersect1\' starting...");
+   Assert.assertTrue("Failure: the circles intersect", circle1.intersects( circ2 ) );
 }
 
 // Test circle intersect on a circle with the same radius
@@ -105,8 +110,8 @@ public void intersect1() {
 public void intersect2() {
    Circle1 circ2 = new Circle1(1,1,3);
   
-   System.out.println("Running test intersect2.");
-   Assert.assertTrue( circle1.intersects( circ2 ) );
+   System.out.println("intersect2\' starting...");
+   Assert.assertTrue("Failure: the circles intersect", circle1.intersects( circ2 ) );
 }
 
 // Test circle intersect on a circle that does not touch
@@ -115,21 +120,9 @@ public void intersect2() {
 public void intersect3() {
    Circle1 circ2 = new Circle1(5,10,2);
   
-   System.out.println("Running test intersect3.");
-   Assert.assertFalse( circle1.intersects( circ2 ) );
+   System.out.println("intersect3\' starting...");
+   Assert.assertFalse("Failure: the circles should not intersect", circle1.intersects( circ2 ) );
 }
 
-/*** NOT USED
-public static void main(String args[])
-{
-   try {
-      org.junit.runner.JUnitCore.runClasses(
-               java.lang.Class.forName("Circle1Test"));
-   } catch (Exception e) {
-      System.out.println("Exception: " + e);
-   }
-}
-***/
-
-}
+} // end Circle1Test.java
 

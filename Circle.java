@@ -31,7 +31,12 @@ public Circle(double x, double y, double radius)
 public double scale(double factor)
 {  
    // FIXED: used to have addition op instead of multiplication
-   radius = radius * factor; 
+   // FIXED: negative factors are ignored
+   if ( factor >= 0 ) {
+	  radius = radius * factor;
+   } else {
+    System.err.printf(" **Factor %f cannot be negative!\n", factor);
+	}
    return radius;
 }
 
