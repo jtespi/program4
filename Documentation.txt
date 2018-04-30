@@ -1,0 +1,7 @@
+Program 4 - JUnit testing
+Documentation
+By: Jacob Espinoza, 2018-04-30
+---------------------------------------
+
+Changed scale() in Circle.java to correctly change the radius.
+Before it incorrectly added the factor to the old radius instead of multiplying it.

@@ -2,9 +2,32 @@
  Date: 2018 April 25 -->
 <project name="program4" default="compile" >
 
-   <!-- standard compile task, but turn debugging on for source viewing -->
+   <!-- property for the classpath to the JUnit class -->
+   <property name="classpath" location="lib"/>
+   <property name="build" location="build"/>
+
+    <!-- taskdef produces an error :( 
+    <taskdef name="junit"
+            class="org.apache.tools.ant.taskdefs.optional.junit.JUnitTask">
+      <classpath>
+        <pathelement location="${junitdir}/junit.jar"/>
+        <pathelement location="${junitdir}/ant-junit.jar"/>
+      </classpath>
+    </taskdef>
+    -->
+
+   <path id="build.classpath">
+      <fileset dir="${classpath}">
+         <include name="*.jar"/>
+      </fileset>
+   </path>
+
+   <!-- standard compile task, with a custom classpath for JUnit -->
    <target name="compile" description="compile the source">
-      <javac srcdir="." includeantruntime="false" debug="false"/>
+      <mkdir dir="${build}"/>
+      <javac srcdir="." destdir="${build}" includeantruntime="false">
+          <classpath refid="build.classpath"/>
+      </javac>
    </target>
 
    
@@ -23,6 +46,7 @@
       <delete>
          <fileset dir="." includes="*.class"/>
       </delete>
+      <delete dir="${build}"/>
    </target>
 
 </project>
