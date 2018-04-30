@@ -1,6 +1,6 @@
 /**
 * Implements a base abstract class for a circle. Everything except 
-* a intersects() method is implemented here. Subclass must implement
+* a intersects() method is implemented here. Subclasses must implement
 * the intersects() method.
 **/
 public abstract class Circle
@@ -9,7 +9,7 @@ public abstract class Circle
    protected double radius;
 
 /**
-* Create new circle
+* Create a new circle
 * @param x is the x coordinate of the center
 * @param y is the y coordinate of the center
 * @param radius is the radius
@@ -29,8 +29,9 @@ public Circle(double x, double y, double radius)
 * @return the new radius
 **/
 public double scale(double factor)
-{
-   radius = radius * factor;
+{  
+   // FIXED: used to have addition op instead of multiplication
+   radius = radius * factor; 
    return radius;
 }
 

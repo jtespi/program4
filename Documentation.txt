@@ -5,3 +5,7 @@ By: Jacob Espinoza, 2018-04-30
 
 Changed scale() in Circle.java to correctly change the radius.
 Before it incorrectly added the factor to the old radius instead of multiplying it.
+
+Super function call in Circle2.java had arguments in the wrong order.
+The incorrect order was super( y, x, radius), which would reverse x and y coordinates.
+

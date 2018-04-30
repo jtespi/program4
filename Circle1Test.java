@@ -15,12 +15,12 @@ import org.junit.*;
 
 public class Circle1Test
 {
-   // Data you need for each test case
+   // Data needed for each test case
    private Circle1 circle1;
 
-// 
-// Stuff you want to do before each test case
-//
+
+// Set up each test case
+//  prints a message and instantiates a new Circle1 object
 @Before
 public void setup()
 {
@@ -28,18 +28,16 @@ public void setup()
    circle1 = new Circle1(1,2,3);
 }
 
-//
-// Stuff you want to do after each test case
-//
+// Tear down each test case
+//  print a message the test finished
 @After
 public void teardown()
 {
    System.out.println("Test finished.");
 }
 
-//
+
 // Test a simple positive move
-//
 @Test
 public void simpleMove()
 {
@@ -49,9 +47,8 @@ public void simpleMove()
    Assert.assertTrue(p.x == 2 && p.y == 3);
 }
 
-// 
+
 // Test a simple negative move
-//
 @Test
 public void simpleMoveNeg()
 {
@@ -61,8 +58,8 @@ public void simpleMoveNeg()
    Assert.assertTrue(p.x == 0 && p.y == 1);
 }
 
+
 // Test circle scaling up by a factor of 3
-//
 @Test
 public void scaleUp() {
    double rad;
