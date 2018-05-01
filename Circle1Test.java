@@ -46,6 +46,7 @@ public void simpleMove()
    Point p;
    System.out.println("simpleMove\' starting...");
    p = circle1.moveBy(1,1);
+   System.out.printf("Point p = %f,%f\n", p.x, p.y);
    Assert.assertTrue("Failure: centre point should be 2, 3", p.x == 2 && p.y == 3);
 }
 
@@ -57,6 +58,7 @@ public void simpleMoveNeg()
    Point p;
    System.out.println("simpleMoveNeg\' starting...");
    p = circle1.moveBy(-1,-1);
+   System.out.printf("Point p = %f,%f\n", p.x, p.y);
    Assert.assertTrue("Failure: centre point should be 0, 1", p.x == 0 && p.y == 1);
 }
 
@@ -93,14 +95,14 @@ public void scaleNeg() {
    Assert.assertTrue("Failure, radius should not be negative", rad >= 0 );
 }
 
-// Test circle intersect on an overlapping circle
-//   The other circle has the exact same dimensions
+// Test circle intersect on a circle that almost intersects
+//
 @Test
 public void intersect1() {
-   Circle1 circ2 = new Circle1(1,2,3);
-  
+   Circle1 circ2 = new Circle1(4,1,2);
+
    System.out.println("intersect1\' starting...");
-   Assert.assertTrue("Failure: the circles intersect", circle1.intersects( circ2 ) );
+   Assert.assertFalse("Failure: the circles should not intersect", circle1.intersects( circ2 ) );
 }
 
 // Test circle intersect on a circle with the same radius
