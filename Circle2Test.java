@@ -90,7 +90,7 @@ public void scaleNeg() {
 
    System.out.println("scaleNeg\' starting...");
    rad = circ2a.scale( negScalar );
-   System.out.printf("New rad = %f\n", rad);
+   System.out.printf(" radius is %f\n", rad);
    Assert.assertTrue("Failure, radius should not be negative", rad >= 0 );
 }
 
@@ -101,7 +101,9 @@ public void intersect1() {
    Circle2 circb = new Circle2(10, 14, 2.5);
   
    System.out.println("intersect1\' starting...");
-   Assert.assertFalse("Failure: circles should not intersect", circ2a.intersects( circb ) );
+   boolean result = circ2a.intersects( circb );
+   System.out.printf("  %b\n", result);
+   Assert.assertFalse("Failure: circles should not intersect", result );
 }
 
 // Test circle intersect on a circle with the same radius
@@ -112,7 +114,9 @@ public void intersect2() {
    Circle2 circb = new Circle2(4,6,6);
   
    System.out.println("intersect2\' starting...");
-   Assert.assertTrue("Failure: circles should intersect", circ2a.intersects( circb ) );
+   boolean result = circ2a.intersects( circb );
+   System.out.printf("  %b\n", result);
+   Assert.assertTrue("Failure: circles should intersect", result );
 }
 
 // Test circle intersect on a circle that does not touch
@@ -122,7 +126,9 @@ public void intersect3() {
    Circle2 circb = new Circle2(55,10,2);
   
    System.out.println("intersect3\' starting...");
-   Assert.assertFalse("Failure: circles should not intersect", circ2a.intersects( circb ) );
+   boolean result = circ2a.intersects( circb );
+   System.out.printf("  %b\n", result);
+   Assert.assertFalse("Failure: circles should not intersect", result );
 }
 
 } // end class Circle2Test

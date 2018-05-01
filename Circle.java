@@ -35,7 +35,7 @@ public double scale(double factor)
    if ( factor >= 0 ) {
 	  radius = radius * factor;
    } else {
-    System.err.printf(" **Factor %f cannot be negative!\n", factor);
+    System.out.printf(" **Factor %f cannot be negative, ignoring\n", factor);
 	}
    return radius;
 }

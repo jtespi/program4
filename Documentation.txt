@@ -12,7 +12,12 @@ The incorrect order was super( y, x, radius), which would reverse x and y coordi
 The scale function used to allow negative scalars which would result in radius values being negative.
 Fixed to not change the radius if the scalar is less than 0.
 
-Intersects in Circle2 did not fully or correctly use the distance formula, so this was fixed.
+Fixed the calculation of intersects in Circle2, it did not fully or correctly use the distance formula at first.
 Now, it calculates the distance between the two circle centres and compares it with the sum of the radii.
 
+Fixed the calculation of intersection in Circle1, it used to use the wrong comparisons.
+Now it compares the radius difference/sum, and the difference between circle centre points.
+
+Changed formatting in all of the test cases to make them more visually pleasing and informative, such as by printing the return values that were being asserted.
+Added more test cases for scalars and intersections.
 

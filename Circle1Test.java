@@ -46,7 +46,7 @@ public void simpleMove()
    Point p;
    System.out.println("simpleMove\' starting...");
    p = circle1.moveBy(1,1);
-   System.out.printf("Point p = %f,%f\n", p.x, p.y);
+   System.out.printf("Point p = %f, %f\n", p.x, p.y);
    Assert.assertTrue("Failure: centre point should be 2, 3", p.x == 2 && p.y == 3);
 }
 
@@ -58,7 +58,7 @@ public void simpleMoveNeg()
    Point p;
    System.out.println("simpleMoveNeg\' starting...");
    p = circle1.moveBy(-1,-1);
-   System.out.printf("Point p = %f,%f\n", p.x, p.y);
+   System.out.printf("Point p = %f, %f\n", p.x, p.y);
    Assert.assertTrue("Failure: centre point should be 0, 1", p.x == 0 && p.y == 1);
 }
 
@@ -69,6 +69,7 @@ public void scaleUp() {
    double rad;
    System.out.println("scaleUp\' starting...");
    rad = circle1.scale( 3 );
+   System.out.printf(" radius is %f\n", rad);
    Assert.assertTrue("Failure: radius should be 9", rad == 9 );
 }
 
@@ -79,6 +80,7 @@ public void scaleDown() {
    double rad;
    System.out.println("scaleDown\' starting...");
    rad = circle1.scale( 0.5 );
+   System.out.printf(" radius is %f\n", rad);
    Assert.assertTrue("Failure: radius should be 1.5", rad == 1.5 );
 }
 
@@ -91,7 +93,7 @@ public void scaleNeg() {
 
    System.out.println("scaleNeg\' starting...");
    rad = circle1.scale( negScalar );
-   System.out.printf("New rad = %f\n", rad);
+   System.out.printf(" radius is %f\n", rad);
    Assert.assertTrue("Failure, radius should not be negative", rad >= 0 );
 }
 
@@ -99,10 +101,12 @@ public void scaleNeg() {
 //
 @Test
 public void intersect1() {
-   Circle1 circ2 = new Circle1(4,6,1.8);
+   Circle1 circ2 = new Circle1(4,6,1.9);
 
    System.out.println("intersect1\' starting...");
-   Assert.assertFalse("Failure: the circles should not intersect", circle1.intersects( circ2 ) );
+   boolean result = circle1.intersects( circ2 );
+   System.out.printf("  %b\n", result);
+   Assert.assertFalse("Failure: the circles should not intersect", result );
 }
 
 // Test circle intersect on a circle with the same radius
@@ -113,7 +117,9 @@ public void intersect2() {
    Circle1 circ2 = new Circle1(1,1,3);
   
    System.out.println("intersect2\' starting...");
-   Assert.assertTrue("Failure: the circles intersect", circle1.intersects( circ2 ) );
+   boolean result = circle1.intersects( circ2 );
+   System.out.printf("  %b\n", result);
+   Assert.assertTrue("Failure: the circles should intersect", result );
 }
 
 // Test circle intersect on a circle that does not touch
@@ -123,7 +129,9 @@ public void intersect3() {
    Circle1 circ2 = new Circle1(5,10,2);
   
    System.out.println("intersect3\' starting...");
-   Assert.assertFalse("Failure: the circles should not intersect", circle1.intersects( circ2 ) );
+   boolean result = circle1.intersects( circ2 );
+   System.out.printf("  %b\n", result);
+   Assert.assertFalse("Failure: the circles should not intersect", result );
 }
 
 } // end Circle1Test.java
