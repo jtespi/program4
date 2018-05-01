@@ -21,7 +21,7 @@ public class Circle2Test
 @Before
 public void setup()
 {
-   System.out.println("\nTest \'");
+   System.out.print("\nTest \'");
    circ2a = new Circle2(5,7,6);
 }
 
@@ -98,10 +98,10 @@ public void scaleNeg() {
 //
 @Test
 public void intersect1() {
-   Circle2 circb = new Circle2(4,3,2.75);
+   Circle2 circb = new Circle2(10, 14, 2.5);
   
-   System.out.println("intersect1\t starting...");
-   Assert.assertFalse("Failure: circles not intersect", circ2a.intersects( circb ) );
+   System.out.println("intersect1\' starting...");
+   Assert.assertFalse("Failure: circles should not intersect", circ2a.intersects( circb ) );
 }
 
 // Test circle intersect on a circle with the same radius

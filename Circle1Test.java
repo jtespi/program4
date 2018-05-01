@@ -99,7 +99,7 @@ public void scaleNeg() {
 //
 @Test
 public void intersect1() {
-   Circle1 circ2 = new Circle1(4,1,2);
+   Circle1 circ2 = new Circle1(4,6,1.8);
 
    System.out.println("intersect1\' starting...");
    Assert.assertFalse("Failure: the circles should not intersect", circle1.intersects( circ2 ) );
