@@ -21,3 +21,4 @@ Now it compares the radius difference/sum, and the difference between circle cen
 Changed formatting in all of the test cases to make them more visually pleasing and informative, such as by printing the return values that were being asserted.
 Added more test cases for scalars and intersections.
 
+***On 2018-05-14: Fixed critical miscalculation in Circle.java: the x offset was being added to the y-value.
